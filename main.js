@@ -16,7 +16,8 @@ startLayer.addTo(map);
 
 let themaLayer = {
   sights: L.featureGroup(),
-  lines: L.featureGroup().addTo(map),
+  lines: L.featureGroup(),
+  stops: L.featureGroup().addTo(map),
 }
 
 // Hintergrundlayer
@@ -34,6 +35,7 @@ L.control
   }, {
     "Sehenswürdigkeiten": themaLayer.sights,
     "Vienna Sightseeing Linien": themaLayer.lines,
+    "Vienna Sightseeing Stops": themaLayer.stops,
   })
   .addTo(map);
 
@@ -80,3 +82,19 @@ async function loadLines(url) {
   }).addTo(themaLayer.lines);
 }
 loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json");
+
+async function loadStops(url) {
+  // console.log("Loading", url);
+  let response = await fetch(url);
+  let geojson = await response.json();
+  // console.log(geojson);
+  L.geoJSON(geojson, {
+    onEachFeature: function (feature, layer) {
+      console.log(feature);
+      layer.bindPopup(`
+      `);
+    }
+  }).addTo(themaLayer.stops);
+}
+loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json");
+
