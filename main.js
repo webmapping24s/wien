@@ -17,7 +17,8 @@ startLayer.addTo(map);
 let themaLayer = {
   sights: L.featureGroup(),
   lines: L.featureGroup(),
-  stops: L.featureGroup().addTo(map),
+  stops: L.featureGroup(),
+  zones: L.featureGroup().addTo(map),
 }
 
 // Hintergrundlayer
@@ -36,6 +37,7 @@ L.control
     "Sehenswürdigkeiten": themaLayer.sights,
     "Vienna Sightseeing Linien": themaLayer.lines,
     "Vienna Sightseeing Stops": themaLayer.stops,
+    "Fußgängerzonen": themaLayer.zones,
   })
   .addTo(map);
 
@@ -98,3 +100,17 @@ async function loadStops(url) {
 }
 loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json");
 
+async function loadZones(url) {
+  // console.log("Loading", url);
+  let response = await fetch(url);
+  let geojson = await response.json();
+  // console.log(geojson);
+  L.geoJSON(geojson, {
+    onEachFeature: function (feature, layer) {
+      console.log(feature);
+      layer.bindPopup(`
+      `);
+    }
+  }).addTo(themaLayer.zones);
+}
+loadZones("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FUSSGEHERZONEOGD&srsName=EPSG:4326&outputFormat=json");
