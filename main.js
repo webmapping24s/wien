@@ -42,4 +42,6 @@ L.control
   })
   .addTo(map);
 
-  
+L.control
+  .fullscreen()
+  .addTo(map);
