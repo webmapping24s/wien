@@ -15,10 +15,10 @@ let startLayer = L.tileLayer.provider("BasemapAT.grau");
 startLayer.addTo(map);
 
 let themaLayer = {
-  sights: L.featureGroup(),
-  lines: L.featureGroup(),
-  stops: L.featureGroup(),
-  zones: L.featureGroup(),
+  sights: L.featureGroup().addTo(map),
+  lines: L.featureGroup().addTo(map),
+  stops: L.featureGroup().addTo(map),
+  zones: L.featureGroup().addTo(map),
   hotels: L.featureGroup().addTo(map),
 }
 
@@ -124,7 +124,7 @@ async function loadHotels(url) {
   // console.log(geojson);
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
-      console.log(feature);
+      //console.log(feature);
       layer.bindPopup(`
       `);
     }
