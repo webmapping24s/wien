@@ -37,12 +37,6 @@ L.control
   })
   .addTo(map);
 
-// Marker Stephansdom
-L.marker([stephansdom.lat, stephansdom.lng])
-  .addTo(map)
-  .bindPopup(stephansdom.title)
-  .openPopup();
-
 // Maßstab
 L.control
   .scale({
