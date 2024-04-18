@@ -24,6 +24,8 @@ L.control
     "BasemapAT Oberfläche": L.tileLayer.provider("BasemapAT.surface"),
     "BasemapAT Orthofoto": L.tileLayer.provider("BasemapAT.orthofoto"),
     "BasemapAT Beschriftung": L.tileLayer.provider("BasemapAT.overlay"),
+    // Stadia.StamenWatercolor
+    "Stadia StamenWatercolor": L.tileLayer.provider("Stadia.StamenWatercolor"),
   })
   .addTo(map);
 
@@ -39,3 +41,5 @@ L.control
     imperial: false,
   })
   .addTo(map);
+
+  
