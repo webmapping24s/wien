@@ -57,7 +57,7 @@ async function loadSights(url) {
   // console.log(geojson);
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
-      console.log(feature);
+      //console.log(feature);
       layer.bindPopup(`
         <img src="${feature.properties.THUMBNAIL}" alt="*">
         <h4><a href="${feature.properties.WEITERE_INF}" target="wien">${feature.properties.NAME}</a></h4>
@@ -75,7 +75,7 @@ async function loadLines(url) {
   // console.log(geojson);
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
-      console.log(feature);
+      //console.log(feature);
       layer.bindPopup(`
       `);
     }
@@ -90,7 +90,7 @@ async function loadStops(url) {
   // console.log(geojson);
   L.geoJSON(geojson, {
     onEachFeature: function (feature, layer) {
-      console.log(feature);
+      //console.log(feature);
       layer.bindPopup(`
       `);
     }
