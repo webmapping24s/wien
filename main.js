@@ -96,6 +96,8 @@ async function loadStops(url) {
     onEachFeature: function (feature, layer) {
       //console.log(feature);
       layer.bindPopup(`
+        <h4><i class="fa-solid fa-bus"></i> ${feature.properties.LINE_NAME}</h4>
+        <p> ${feature.properties.STAT_ID} ${feature.properties.STAT_NAME}</p>
       `);
     }
   }).addTo(themaLayer.stops);
