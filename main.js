@@ -123,10 +123,10 @@ async function loadZones(url) {
       layer.bindPopup(`
         <h4>Fußgängerzone ${feature.properties.ADRESSE}</h4>
         <p><i class="fa-regular fa-clock"></i>
-          ${feature.properties.ZEITRAUM}
+          ${feature.properties.ZEITRAUM || "dauerhaft"}
         </p>
         <p><i class="fa-solid fa-circle-info"></i>
-          ${feature.properties.AUSN_TEXT}
+          ${feature.properties.AUSN_TEXT || "ohne Ausnahme"}
         </p>
       `);
     }
